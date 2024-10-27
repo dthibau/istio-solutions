@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: catalog
+  namespace: formation
+spec:
+  hosts:
+  - "catalog.formation.io"
+  gateways:
+  - "catalog-gateway"
+  http:
+  - route:
+    - destination:
+        host: catalog.formation.svc.cluster.local
+        port:
+          number: 80
